@@ -47,9 +47,10 @@
 #define NO_INCLUDE_FENV
 #endif
 #ifdef NO_INCLUDE_FENV
-#pragma message("Do not use fenv header.")
+// fenv header excluded (old MSVC or software floating-point emulation)
 #else
-#pragma message("Use fenv header. If there is a warning about unknown #pragma STDC FENV_ACCESS, this can be ignored.")
+// If there is a warning about unknown #pragma STDC FENV_ACCESS, it can be
+// safely ignored.
 #pragma STDC FENV_ACCESS on
 #include <fenv.h>
 #endif
